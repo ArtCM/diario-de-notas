@@ -1,9 +1,20 @@
+'use client'
+
 import Image from "next/image"
 import Logo from "../../../../public/assets/logo.webp"
 import Link from "next/link"
 import "./style.css"
+import Swal from "sweetalert2"
 
 export default function Footer() {
+    const emBreveAlert = () => {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Em Breve!",
+        });
+    }
+
     return(
         <>
             <footer>
@@ -29,10 +40,10 @@ export default function Footer() {
                         <Link href="/">Home</Link>
                     </li>
                     <li>
-                        <Link href="/alunos">Alunos</Link>
+                        <Link href="#" onClick={(e) => { e.preventDefault(); emBreveAlert(); }}>Alunos</Link>
                     </li>
                     <li>
-                        <Link href="/about">Sobre</Link>
+                        <Link href="#" onClick={(e) => { e.preventDefault(); emBreveAlert(); }}>Sobre</Link>
                     </li>
                 </ul>
             </footer>
