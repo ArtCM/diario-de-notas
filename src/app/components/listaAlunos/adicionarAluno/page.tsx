@@ -1,7 +1,6 @@
-'use client'
+'use client';
 
-import "./style.css"
-
+import "./style.css";
 import React from 'react';
 
 interface AdicionarAlunoProps {
@@ -10,7 +9,7 @@ interface AdicionarAlunoProps {
     onClick: () => void;
 }
 
-const AdicionarAluno: React.FC<AdicionarAlunoProps> = ({ buttonText, buttonColor, onClick }) => {
+export default function AdicionarAluno({ buttonText, buttonColor, onClick }: AdicionarAlunoProps) {
     return (
         <div className="flex flex-end listaAlunos__AddButton">
             <button 
@@ -22,6 +21,4 @@ const AdicionarAluno: React.FC<AdicionarAlunoProps> = ({ buttonText, buttonColor
             </button>
         </div>
     );
-};
-
-export default AdicionarAluno;
+}
