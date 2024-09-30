@@ -19,16 +19,13 @@ Ver: 0.0.1 - Last update: 28/09/2024
 
 # Sobre
 
-O sistema consiste em um diário academico para o professor Carlos, nele serão inseridas as notas de cinco disciplinas, a frequência de cada aluno em percentual (0 a 100%) e será feito o calculo da média das notas de cada aluno, a média da turma e a frequência geral de cada aluno.
+O sistema consiste em um diário academico para o professor Carlos, nele serão inseridas as notas de cinco disciplinas, a frequência de cada aluno em percentual (0 a 100%) e será feito o calculo da média das notas de cada aluno, a média da turma e a frequência geral de cada aluno. A logo e o design do figma foram criados especialmente para o teste.
 
 O sistema também destaca os alunos que tem uma media de notas acima da media da turma e quais alunos tem frequência abaixo de 75%.
 
 ### Tecnologias
 
-Optei por utilizar React com Next e Typescript no Front-end e utilizarei somente CSS sem bibliotécas de estilização.
-
-O Back-end será feito em Java.
-
+Optei por utilizar React, Next.js, Node e Typescript por maior familiaridade e utilizarei somente CSS sem bibliotécas de estilização. Não utilizei banco de dados, utilizei React hooks para gerenciamento de estado da aplicação.
 
 <br>
 
@@ -37,20 +34,12 @@ O Back-end será feito em Java.
 https://www.figma.com/design/xDGzfiY4cKbQr70AXD7xkN/diario-de-notas?node-id=0-1&t=JmtYsFE4dBvecUzx-1
 ~~~
 
-<!-- ## [Clique aqui e veja a aplicação](https://loja-virtual-com-angular.vercel.app) -->
-
-<!-- <img alt="Loja da Steam" src="./readme-img.png" /> -->
+<!-- ## [Clique aqui e veja a aplicação](https://diario-de-notas.vercel.app) -->
 
 <br>
 
 Instalação
 ---------
-A aplicação está dividida em:
-
-- Java (backend)
-- Next.js/React.js (frontend)
-
-### Front
 
 Instale as dependências:
 
