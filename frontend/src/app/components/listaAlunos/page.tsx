@@ -5,8 +5,25 @@ import AdicionarAlunoModal from "./modal/page"
 import "./style.css"
 import { useState } from "react";
 
+interface Aluno {
+    id: number;
+    nome: string;
+    notas: {
+        disciplinaUm: number;
+        disciplinaDois: number;
+        disciplinaTres: number;
+        disciplinaQuatro: number;
+        disciplinaCinco: number;
+    };
+    frequencia: number;
+    mediaAlta: boolean; 
+    frequenciaBaixa: boolean;
+}
+
+type DisciplinaKeys = keyof Aluno['notas'];
+
 export default function ListaAlunos() {
-    const [listaAlunos, setListaAlunos] = useState([
+    const [listaAlunos, setListaAlunos] = useState<Aluno[]>([
         {
             id: 1,
             nome: 'Arthur',
@@ -18,18 +35,22 @@ export default function ListaAlunos() {
                 disciplinaCinco: 5,
             },
             frequencia: 75,
+            mediaAlta: false, 
+            frequenciaBaixa: false,  
         },
         {
             id: 2,
             nome: 'Laura',
             notas: {
                 disciplinaUm: 1,
-                disciplinaDois: 2,
-                disciplinaTres: 3,
-                disciplinaQuatro: 4,
-                disciplinaCinco: 5,
+                disciplinaDois: 5,
+                disciplinaTres: 6,
+                disciplinaQuatro: 8,
+                disciplinaCinco: 9,
             },
             frequencia: 70,
+            mediaAlta: false,
+            frequenciaBaixa: false,  
         }
     ]);
     const [isModalOpen, setModalOpen] = useState(false);
@@ -43,7 +64,10 @@ export default function ListaAlunos() {
     };
 
     const handleAddStudent = (data: { nome: string; notas: number[]; frequencia: number }) => {
-        const newStudent = {
+        const mediaNotas = (data.notas.reduce((acc, nota) => acc + nota, 0)) / data.notas.length; 
+        const mediaTurma = calcularMediaTurma(); 
+    
+        const newStudent: Aluno = {
             id: listaAlunos.length + 1,
             nome: data.nome,
             notas: {
@@ -54,14 +78,59 @@ export default function ListaAlunos() {
                 disciplinaCinco: data.notas[4],
             },
             frequencia: data.frequencia,
+            mediaAlta: mediaNotas > mediaTurma, 
+            frequenciaBaixa: data.frequencia < 75, 
         };
         setListaAlunos((prev) => [...prev, newStudent]);
         handleCloseModal();
     };
 
+    const calcularMediaTurma = () => {
+        const totalNotas = listaAlunos.reduce((acc, aluno) => {
+            const mediaAluno = (aluno.notas.disciplinaUm + aluno.notas.disciplinaDois + aluno.notas.disciplinaTres + aluno.notas.disciplinaQuatro + aluno.notas.disciplinaCinco) / 5;
+            return acc + mediaAluno;
+        }, 0);
+        return totalNotas / listaAlunos.length;
+    };
+
     const handleRemoveStudent = (id: number) => {
         setListaAlunos((prev) => prev.filter(aluno => aluno.id !== id));
     };
+
+    const calcularMedias = () => {
+        const totalAlunos = listaAlunos.length;
+        const totalNotas = {
+            disciplinaUm: 0,
+            disciplinaDois: 0,
+            disciplinaTres: 0,
+            disciplinaQuatro: 0,
+            disciplinaCinco: 0,
+        };
+
+        listaAlunos.forEach(aluno => {
+            totalNotas.disciplinaUm += aluno.notas.disciplinaUm;
+            totalNotas.disciplinaDois += aluno.notas.disciplinaDois;
+            totalNotas.disciplinaTres += aluno.notas.disciplinaTres;
+            totalNotas.disciplinaQuatro += aluno.notas.disciplinaQuatro;
+            totalNotas.disciplinaCinco += aluno.notas.disciplinaCinco;
+        });
+
+        return {
+            disciplinaUm: totalNotas.disciplinaUm / totalAlunos,
+            disciplinaDois: totalNotas.disciplinaDois / totalAlunos,
+            disciplinaTres: totalNotas.disciplinaTres / totalAlunos,
+            disciplinaQuatro: totalNotas.disciplinaQuatro / totalAlunos,
+            disciplinaCinco: totalNotas.disciplinaCinco / totalAlunos,
+        };
+    };
+    const mediasDisciplina = calcularMedias();
+
+    listaAlunos.forEach((aluno) => {
+        aluno.mediaAlta = Object.keys(aluno.notas).every((disciplina) => {
+            const disciplinaKey = disciplina as DisciplinaKeys;
+            return aluno.notas[disciplinaKey] > mediasDisciplina[disciplinaKey];
+        });
+    });
 
     return(
         <section className="listaAlunos">
@@ -105,6 +174,16 @@ export default function ListaAlunos() {
                             </tr>
                         );
                     })}
+                    <tr>
+                        <td>Media:</td>
+                        <td>{mediasDisciplina.disciplinaUm.toFixed(2)}</td>
+                        <td>{mediasDisciplina.disciplinaDois.toFixed(2)}</td>
+                        <td>{mediasDisciplina.disciplinaTres.toFixed(2)}</td>
+                        <td>{mediasDisciplina.disciplinaQuatro.toFixed(2)}</td>
+                        <td>{mediasDisciplina.disciplinaCinco.toFixed(2)}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
                 </tbody>
             </table>
 
