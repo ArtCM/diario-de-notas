@@ -73,12 +73,13 @@ Nomenclatura de commits
 Tecnologias Utilizadas:
 ---------
 - Next.js 14.2.13
-- Java
 - Node 18.17.1
 - HTML
 - CSS
+- React
 - Javascript
 - Typescript
 - Git
 - Normalize.css v8.0.1
+- Sweet Alert 2
 ---------
