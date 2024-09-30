@@ -1,18 +1,21 @@
 import Image from "next/image";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../components/header/page";
 
+import "./style.css";
 
-export default function Home() {
+export const metadata = {
+  title: "Alunos | Diario de Notas",
+  description: "Alunos do Diario de notas do professor",
+};
+
+export default function Alunos() {
   return (
-    <div>
+    <>
       <Header />
 
       <main>
         <p>alunos</p>
       </main>
-
-      <Footer />
-    </div>
+    </>
   );
 }

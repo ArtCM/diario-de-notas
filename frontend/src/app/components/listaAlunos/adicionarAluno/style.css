@@ -1,0 +1,14 @@
+.listaAlunos__AddButton button{
+    border: 0;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px white;
+    transition: all ease-out 0.1s;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+.listaAlunos__AddButton button:hover{
+    transform: scale(0.95);
+    filter: brightness(0.8);
+}

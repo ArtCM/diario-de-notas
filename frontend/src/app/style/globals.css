@@ -19,14 +19,39 @@
     scroll-behavior: smooth;
     text-decoration: none;
     font-family: var(--font-montserrat), Arial, Helvetica, sans-serif;
-    color: var(--terciary);
+    color: var(--white);
   }
 
   body {
-    background: linear-gradient(to right, var(--primary), var(--white));
+    background: linear-gradient(to right, #b9b9b9, #666);
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+  }
+
+  main{
+    padding-top: 100px;
+    height: 100%;
+    flex-grow: 1;
+    display: flex;
+  }
+
+  .flex{
+    display: flex;
+  }
+
+  .flex-end{
+    justify-content: flex-end;
   }
 
   /* Animações */
+  @keyframes shake {
+    0% { transform: translate(0); }
+    25% { transform: translate(-5px); }
+    50% { transform: translate(5px); }
+    75% { transform: translate(-5px); }
+    100% { transform: translate(0); }
+  }
 
   /* Containers */
   .container {
