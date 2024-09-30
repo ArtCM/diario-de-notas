@@ -7,10 +7,19 @@
     flex-direction: column;
     border-radius: 10px;
     box-shadow: 2px 2px 5px rgb(56, 56, 56);
+    width: 100%;
 }
 
 .listaAlunos__lista{
     margin: 25px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.listaAlunos__lista thead{
+    display: none;
 }
 
 .listaAlunos__lista thead tr{
@@ -59,4 +68,14 @@
     fill: var(--red);
     height: 20px;
     width: 20px;
+}
+
+@media(min-width:768px){
+    .listaAlunos__lista{
+        display: table;
+    }
+
+    .listaAlunos__lista thead{
+        display: table-header-group;
+    }
 }

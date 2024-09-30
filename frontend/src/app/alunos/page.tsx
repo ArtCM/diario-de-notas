@@ -14,7 +14,7 @@ export default function Alunos() {
       <Header />
 
       <main>
-        <p>alunos</p>
+        <p>Em Breve</p>
       </main>
     </>
   );

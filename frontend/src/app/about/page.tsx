@@ -13,7 +13,7 @@ export default function About() {
     <>
       <Header />
       <main>
-        <p>about</p>
+        <p><p>Em Breve</p></p>
       </main>
     </>
   );
