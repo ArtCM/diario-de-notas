@@ -1,13 +1,8 @@
 'use client'
 
+import { AdicionarAlunoProps } from "@/types/types";
 import "./style.css";
 import React from 'react';
-
-interface AdicionarAlunoProps {
-    buttonText: string,
-    buttonColor: string,
-    onClick: () => void
-}
 
 export default function AdicionarAluno({ buttonText, buttonColor, onClick }: AdicionarAlunoProps) {
     return (

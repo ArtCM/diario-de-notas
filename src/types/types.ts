@@ -12,3 +12,9 @@ export interface Aluno {
     mediaAlta: boolean;
     frequenciaBaixa: boolean;
   }
+
+export interface AdicionarAlunoProps {
+  buttonText: string,
+  buttonColor: string,
+  onClick: () => void
+}
