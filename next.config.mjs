@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {};
 
+module.exports = {
+    output: 'export',
+    basePath: '/diario-de-notas', 
+    trailingSlash: true, 
+  };
+
 export default nextConfig;
