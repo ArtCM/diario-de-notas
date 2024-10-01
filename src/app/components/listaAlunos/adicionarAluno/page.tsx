@@ -1,5 +1,3 @@
-'use client';
-
 import "./style.css";
 import React from 'react';
 
